@@ -9,11 +9,6 @@ function Footer ({siteTitle}){
       <div className="has-text-centered">
         <div className="columns">
           <div className="column is-one-quarter-desktop is-full-mobile">
-            <p>
-              © {new Date().getFullYear()} {siteTitle}
-            </p>
-          </div>
-          <div className="column is-one-quarter-desktop is-full-mobile">
             <Link to="/">
               {siteTitle}
             </Link>
@@ -27,6 +22,11 @@ function Footer ({siteTitle}){
             <Link to="/contact">
               Contact Us
             </Link>
+          </div>
+          <div className="column is-one-quarter-desktop is-full-mobile">
+            <p>
+              © {new Date().getFullYear()} {siteTitle}
+            </p>
           </div>
         </div>
       </div>
