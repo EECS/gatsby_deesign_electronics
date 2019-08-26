@@ -1,35 +1,41 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { useState } from "react"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+function Header ({siteTitle}){
+  const [navBarActive, setNavBarActive] = useState(false);
+
+  return(
+    <header>
+      <div className="hero-head">
+        <nav className="navbar">
+          <div className="container">
+            <div className="navbar-brand">
+              <Link className="navbar-item" to="/">
+                {siteTitle}
+              </Link>
+              <span className={`navbar-burger burger ${navBarActive ? "is-active": ""}`} onClick={() => setNavBarActive(!navBarActive)}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+            <div className={`navbar-menu ${navBarActive ? "is-active": ""}`}>
+              <div className="navbar-end">
+                <Link className="navbar-item" to="/design-center">
+                  Design Center
+                </Link>
+                <Link className="navbar-item" to="/contact">
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+  );
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
