@@ -5,21 +5,52 @@ import {graphql} from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShareSquare } from "@fortawesome/free-regular-svg-icons";
+
 function DesignCenter({data}) {
 
   const smps_designs = data.allMdx.edges.map((design) =>{
     return(
-      <div className="column" key={design.node.id}>
-        <div className="has-text-centered">
-          <Link to={design.node.fields.slug}>
-              <button className="button is-outlined is-primary">
-                {design.node.frontmatter.seoTitle}
-              </button>
-          </Link>
+      <div className="is-centered column is-one-third-desktop is-full-mobile" key={design.node.id}>
+        <div className="card">
+          <div className="card-image">
+            <Link to={design.node.fields.slug} style={{textDecoration: "None"}}>
+              <figure className="image is-4by3">
+                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image" />
+              </figure>
+            </Link>
+          </div>
+          <div className="card-content">
+            <div className="media">
+              <div className="media-content">
+                <Link to={design.node.fields.slug} style={{textDecoration: "None"}}>
+                  <p className="title is-5">{design.node.frontmatter.seoTitle}</p>
+                </Link>
+              </div>
+            </div>
+
+            <div className="content">
+              {design.node.frontmatter.description}
+            </div>
+            <footer className="card-footer columns">
+              <div className="column card-footer-item is-four-fifths">
+                <span>
+                  <Link to={design.node.fields.slug} style={{textDecoration: "None"}}>
+                    <p>
+                      Read more &rarr;
+                    </p>
+                  </Link>
+                </span>
+              </div>
+              <p className="card-footer-item">
+                <span className="icon is-medium">
+                  <FontAwesomeIcon icon={faShareSquare}/>
+                </span>
+              </p>
+            </footer>
+          </div>
         </div>
-        <h2>
-          {design.node.frontmatter.description}
-        </h2>
       </div>
     );
   });
@@ -38,15 +69,8 @@ function DesignCenter({data}) {
                 </h1>
               </div>
             </div>
-            <div className="columns">
-              <div className="column is-full">
-                <div className="column is-full">
-                  <h2 className="title is-2">
-                    Switch-Mode Power Supplies:
-                  </h2>
-                </div>
+            <div className="columns is-centered">
               {smps_designs}
-              </div>
             </div>
           </div>
         </section>
