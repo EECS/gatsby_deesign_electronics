@@ -73,9 +73,9 @@ function ContactForm(props){
 function onSubmit(values, { setSubmitting }) {
 
   setTimeout(() => {
-    setSubmitting(false);
     window.location.pathname = "/contact-thanks";
-  }, 1000)
+    setSubmitting(false);
+  }, 2000)
 }
 
 export default function ContactFormContainer() {
