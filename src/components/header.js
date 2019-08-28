@@ -9,26 +9,24 @@ function Header ({siteTitle}){
     <header>
       <div className="hero-head">
         <nav className="navbar">
-          <div className="container">
-            <div className="navbar-brand">
-              <Link className="navbar-item" to="/">
-                {siteTitle}
+          <div className="navbar-brand">
+            <Link className="navbar-item" to="/">
+              {siteTitle}
+            </Link>
+            <span className={`navbar-burger burger ${navBarActive ? "is-active": ""}`} onClick={() => setNavBarActive(!navBarActive)}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <div className={`navbar-menu ${navBarActive ? "is-active": ""}`}>
+            <div className="navbar-end">
+              <Link className="navbar-item" to="/design-center">
+                Design Center
               </Link>
-              <span className={`navbar-burger burger ${navBarActive ? "is-active": ""}`} onClick={() => setNavBarActive(!navBarActive)}>
-                <span></span>
-                <span></span>
-                <span></span>
-              </span>
-            </div>
-            <div className={`navbar-menu ${navBarActive ? "is-active": ""}`}>
-              <div className="navbar-end">
-                <Link className="navbar-item" to="/design-center">
-                  Design Center
-                </Link>
-                <Link className="navbar-item" to="/contact">
-                  Contact Us
-                </Link>
-              </div>
+              <Link className="navbar-item" to="/contact">
+                Contact Us
+              </Link>
             </div>
           </div>
         </nav>

@@ -12,6 +12,7 @@ import "bulmaswatch/minty/bulmaswatch.min.css"
 
 import Header from "./header"
 import Footer from "./footer"
+import "../static/index.css"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`

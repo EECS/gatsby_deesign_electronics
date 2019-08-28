@@ -37,7 +37,7 @@ function DesignCenter({data}) {
               <div className="column card-footer-item is-four-fifths">
                 <span>
                   <Link to={design.node.fields.slug} style={{textDecoration: "None"}}>
-                    <p>
+                    <p className="has-text-primary hover-dark">
                       Read more &rarr;
                     </p>
                   </Link>
