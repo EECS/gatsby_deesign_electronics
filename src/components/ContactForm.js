@@ -10,21 +10,22 @@ const initialValues = {
 }
 
 function ContactForm(props){
-  const { isSubmitting, handleSubmit, touched } = props;
+  const { isSubmitting, touched } = props;
 
   return(
     <div className="columns is-mobile is-centered">
       <div className="column is-three-quarters">
-        <form onSubmit={(e) => (
-            e.preventDefault(),
-            handleSubmit()
-          )}
+        <form
           method="POST"
-          data-netlify="true">
+          data-netlify="true"
+          name="contact"
+          action="/contact-thanks">
           <div className="field">
             <label className="label">Name</label>
             <div className="control">
-                <Field name="name" className="input" type="text" placeholder="Enter name here."/>
+                <Field name="name"  render={({field}) => (
+                  <input {...field} type="text" className="input" placeholder ="Enter name here." />
+                )}/>
             </div>
             {touched.name && (
               <ErrorMessage name="name">
@@ -36,7 +37,9 @@ function ContactForm(props){
           <div className="field">
             <label className="label">Email</label>
             <div className="control">
-              <Field name="email" className="input" type="email" placeholder="Enter email here." />
+              <Field name="email" render={({field}) => (
+                  <input {...field} type="email" className="input" placeholder ="Enter email here." />
+                )}/>
             </div>
             {touched.email && (
               <ErrorMessage name="email">
@@ -48,7 +51,7 @@ function ContactForm(props){
           <div className="field">
             <label className="label">Message</label>
             <div className="control">
-                <Field name="message" className="textarea" render={({field}) => (
+                <Field name="message" render={({field}) => (
                   <textarea {...field} className="textarea" placeholder ="Enter message here." />
                 )}/>
             </div>
@@ -68,15 +71,6 @@ function ContactForm(props){
       </div>
     </div>
   );
-  
-}
-
-function onSubmit(values, { setSubmitting }) {
-
-  setTimeout(() => {
-    window.location.pathname = "/contact-thanks";
-    setSubmitting(false);
-  }, 1000)
 }
 
 export default function ContactFormContainer() {
@@ -84,7 +78,6 @@ export default function ContactFormContainer() {
     <Formik
       initialValues={initialValues}
       validationSchema={getYupValidationSchema}
-      onSubmit={onSubmit}
       render={ContactForm}
     />
   )
