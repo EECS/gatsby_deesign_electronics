@@ -19,6 +19,7 @@ function ContactForm(props){
             e.preventDefault(),
             handleSubmit()
           )}
+          method="POST"
           data-netlify="true">
           <div className="field">
             <label className="label">Name</label>
@@ -75,7 +76,7 @@ function onSubmit(values, { setSubmitting }) {
   setTimeout(() => {
     window.location.pathname = "/contact-thanks";
     setSubmitting(false);
-  }, 2000)
+  }, 1000)
 }
 
 export default function ContactFormContainer() {
