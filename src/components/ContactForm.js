@@ -18,7 +18,8 @@ function ContactForm(props){
         <form onSubmit={(e) => (
             e.preventDefault(),
             handleSubmit()
-          )}>
+          )}
+          data-netlify="true">
           <div className="field">
             <label className="label">Name</label>
             <div className="control">
